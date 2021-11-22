@@ -1,0 +1,22 @@
+<%= form_with(model: attack_tree) do |form| %>
+  <% if attack_tree.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attack_tree.errors.count, "error") %> prohibited this attack_tree from being saved:</h2>
+
+      <ul>
+        <% attack_tree.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

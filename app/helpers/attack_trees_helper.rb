@@ -1,0 +1,2 @@
+module AttackTreesHelper
+end
