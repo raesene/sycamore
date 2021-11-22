@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sycamore</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <%= link_to "Sycamore", "#", id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li> <%= link_to "Home", "#" %></li>
+          <li> <%= link_to "List Trees", "#" %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+    <%= yield %>
+  </div>
+  </body>
+</html>
