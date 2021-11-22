@@ -30,7 +30,7 @@
   <table>
     <thead>
       <tr>
-        <th>Content</th>
+        <th>Attack Tree</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -38,7 +38,7 @@
     <tbody>
       <% @attack_trees.each do |attack_tree| %>
         <tr>
-          <td><%= attack_tree.content %></td>
+          <td><%= attack_tree.content.split("\r\n")[0] %></td>
           <td><%= link_to 'Show', attack_tree %></td>
           <td><%= link_to 'Edit', edit_attack_tree_path(attack_tree) %></td>
           <td><%= link_to 'Destroy', attack_tree, method: :delete, data: { confirm: 'Are you sure?' } %></td>
