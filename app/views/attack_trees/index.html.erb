@@ -1,27 +1,60 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sycamore</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<h1>Attack Trees</h1>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <%= link_to "Sycamore", "#", id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li> <%= link_to "Home", "#" %></li>
+          <li> <%= link_to "List Trees", attack_trees_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="container">
+  <p id="notice"><%= notice %></p>
 
-  <tbody>
-    <% @attack_trees.each do |attack_tree| %>
+  <h1>Attack Trees</h1>
+  
+  <table>
+    <thead>
       <tr>
-        <td><%= attack_tree.content %></td>
-        <td><%= link_to 'Show', attack_tree %></td>
-        <td><%= link_to 'Edit', edit_attack_tree_path(attack_tree) %></td>
-        <td><%= link_to 'Destroy', attack_tree, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Content</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+  
+    <tbody>
+      <% @attack_trees.each do |attack_tree| %>
+        <tr>
+          <td><%= attack_tree.content %></td>
+          <td><%= link_to 'Show', attack_tree %></td>
+          <td><%= link_to 'Edit', edit_attack_tree_path(attack_tree) %></td>
+          <td><%= link_to 'Destroy', attack_tree, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  
+  <%= link_to 'New Attack Tree', new_attack_tree_path %>
+  
+  </div>
+  </body>
+</html>
 
-<br>
 
-<%= link_to 'New Attack Tree', new_attack_tree_path %>
+
+
