@@ -7,6 +7,8 @@ ruby '3.0.2'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Bootstrap SASS for CSS
 gem 'bootstrap-sass', '3.4.1'
+#Use Friendly ID to generate URL slugs 
+gem 'friendly_id', '~> 5.3'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets

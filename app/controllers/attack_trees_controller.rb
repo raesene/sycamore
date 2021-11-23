@@ -1,6 +1,7 @@
 class AttackTreesController < ApplicationController
   before_action :set_attack_tree, only: %i[ show edit update destroy ]
 
+
   # GET /attack_trees or /attack_trees.json
   def index
     @attack_trees = AttackTree.all
@@ -59,7 +60,7 @@ class AttackTreesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_attack_tree
-      @attack_tree = AttackTree.find(params[:id])
+      @attack_tree = AttackTree.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
