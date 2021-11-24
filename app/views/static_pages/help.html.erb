@@ -1,2 +1,69 @@
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<h1>Notes on Creating Deciduous Attack Trees</h1>
+<p>The best place to start for this is undoubtedly the two initial blog posts about Deciduous <a href="https://swagitda.com/blog/posts/security-decision-trees-with-graphviz/">here</a>, and <a href="https://swagitda.com/blog/posts/rick-morty-thanksploitation-decision-tree/">here</a>
+<p> On top of that here's some notes on how I use it. We'll worth through the elements from the top down. This may not be how you create your tree but it will hopefully be a handy reference</p>
+
+<h3 id="starting-a-tree">Starting a Tree</h2>
+<p>First you start with a title describing your Attack tree</p>
+<pre><code class="lang-yaml"><span class="hljs-built_in">title</span>: my attack <span class="hljs-keyword">tree</span>
+</code></pre>
+
+<p>With your attack tree title created things should look like this.</p>
+<%= image_tag 'title.png', alt: "deciduous title", class: "img-responsive center-block" %>
+<br />
+<h3 id="adding-facts">Adding Facts</h3>
+<p>The next step is to add facts about your attack tree</p>
+<pre><code class="lang-yaml">facts:
+ -<span class="ruby"> <span class="hljs-symbol">fact_one:</span> This is the first fact
+</span>   from: 
+      -<span class="ruby"> reality
+</span> -<span class="ruby"> <span class="hljs-symbol">fact_two:</span> This is the second fact
+</span>   from: 
+      -<span class="ruby"> reality</span>
+</code></pre>
+<p>A couple of important things to note about the layout here. We&#39;re using YAML to create our Attack Tree, so whitespace and indentation is important (N.B. YAML uses spaces not tabs). for each fact we start with a key: value pair. The value is what will show up in the Attack tree and the key is how we&#39;ll reference it elsewhere.</p>
+<p>Then under each fact we have a &quot;from&quot; section.  This is how Decidous links objects in the tree. Before you add the from section it&#39;ll look like this with the three elements besides each other.</p>
+<%= image_tag 'facts-with-no-from.png', alt: "Facts completed without a from", class: "img-responsive center-block" %>
+<br />
+<p>After adding the from statements we can see that the two facts correctly inherit from &quot;reality&quot;</p>
+<%= image_tag 'facts-from-reality.png', alt: "Facts completed with from", class: "img-responsive center-block" %>
+<br />
+<h3 id="adding-attacks">Adding Attacks</h3>
+<p>Next up we have attacks. The pattern of layout is pretty similar to facts, we start an attacks section and then least each attack and the facts to which they relate.</p>
+<pre><code class="lang-yaml">attacks:
+  -<span class="ruby"> <span class="hljs-symbol">attack_one:</span> This is the first attack
+</span>    from:
+      -<span class="ruby"> fact_one
+</span>  -<span class="ruby"> <span class="hljs-symbol">attack_two:</span> This is the second attack
+</span>    from:
+      -<span class="ruby"> fact_one
+</span>      -<span class="ruby"> fact_two
+</span>  -<span class="ruby"> <span class="hljs-symbol">attack_three:</span> This is the third attack
+</span>    from:
+      -<span class="ruby"> fact_two</span>
+</code></pre>
+<p>This section shows that our attacks can come from a single fact or multiple facts, we just add more elements to the from line. When we&#39;re done our tree will look like this</p>
+<%= image_tag 'with-attacks.png', alt: "Attacks added", class: "img-responsive center-block" %>
+<br />
+<h3 id="adding-mitigations">Adding Mitigations</h3>
+<p>similar to attacks we lay out our mitigations one at a time with the attacks they mitigate</p>
+<pre><code class="lang-yaml">mitigations:
+  -<span class="ruby"> <span class="hljs-symbol">mitigation_one:</span> This is the first mitigation
+</span>    from:
+      -<span class="ruby"> attack_one
+</span>  -<span class="ruby"> <span class="hljs-symbol">mitigation_two:</span> This is the second mitigation
+</span>    from:
+      -<span class="ruby"> attack_two</span>
+</code></pre>
+<p>With that added it should look like this</p>
+<%= image_tag 'with-mitigations.png', alt: "Mitigations added", class: "img-responsive center-block" %>
+<br />
+<h3 id="adding-goals">Adding Goals</h3>
+<p>Lastly we have attacker goals, we can list what the attackers were looking for and any un-mitigated routes</p>
+<pre><code class="lang-yaml">goals:
+  - goal_one: this <span class="hljs-keyword">is</span> <span class="hljs-keyword">the</span> <span class="hljs-keyword">first</span> goal
+    <span class="hljs-keyword">from</span>:
+      - attack_three
+</code></pre>
+<p>and with that added our complete tree should look like this,</p>
+<%= image_tag 'with-goals.png', alt: "Goals added", class: "img-responsive center-block" %>
+<br />
