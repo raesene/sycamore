@@ -1,7 +1,7 @@
 class AttackTreesController < ApplicationController
   before_action :set_attack_tree, only: %i[ show edit update destroy ]
   if Rails.env.production?
-    before_action :authenticate, only: %i[ edit update destroy ]
+    before_action :authenticate, only: %i[ new edit update destroy ]
   end
 
 
