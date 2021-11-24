@@ -2,7 +2,7 @@
 
 The goal of this application is to build on [Deciduous](https://www.deciduous.app/) to allow for trees to be created, edited and shared.
 
-A sample installation of the application is available on [heroku](http://sycamore.pwndland.uk), where you can view some trees but like any of this it's subject to rapid change, so don't put any content you care about up there :)
+A sample installation of the application is available on [heroku](https://sycamore.pwndland.uk), where you can view some trees but like any of this it's subject to rapid change, so don't put any content you care about up there :)
 
 The code is a relatively simple Ruby on Rails 6 application, with the content of the attack trees stored in a model imaginatively called AttackTree.
 
