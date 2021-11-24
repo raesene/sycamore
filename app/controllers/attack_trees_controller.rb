@@ -1,5 +1,9 @@
 class AttackTreesController < ApplicationController
   before_action :set_attack_tree, only: %i[ show edit update destroy ]
+  if Rails.env.production?
+    before_action :authenticate, only: %i[ edit update destroy ]
+  end
+
 
 
   # GET /attack_trees or /attack_trees.json
@@ -67,4 +71,11 @@ class AttackTreesController < ApplicationController
     def attack_tree_params
       params.require(:attack_tree).permit(:content)
     end
+
+    def authenticate
+      authenticate_or_request_with_http_basic do |username, password|
+        username == ENV['SYCAMORE_USERNAME'] && password == ENV['SYCAMORE_PASSWORD']
+      end
+    end
+
 end
