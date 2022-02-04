@@ -10,6 +10,8 @@ The code is a relatively simple Ruby on Rails 6 application, with the content of
 
 There's a Dockerfile included in the repository that can be used to build and look at a dev. version `docker build -t sycamore .` then `docker run -d -p 3000:3000 sycamore` should work fine.
 
+There's also a pre-built version of the image on GHCR, which can be run `docker run -d -p 3000:3000 ghcr.io/raesene/sycamore:main`
+
 ## Authentication
 
 When deployed to a rails "production" environment the application will look for two environment variables to set a username and password to protect any access to creation/editing/updating/deleting of Attack Trees. SYCAMORE_USERNAME and SYCAMORE_PASSWORD. It's HTTP basic auth so do run over a TLS connection if you care about the creds you're using and the integrity of your attack trees.
