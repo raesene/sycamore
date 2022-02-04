@@ -15,10 +15,6 @@ on:
   pull_request:
     branches: [ main ]
 
-permissions:
-  id-token: write
-  contents: write              # This is required for actions/checkout@v1
-  security-events: write   # To upload sarif files
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -37,6 +33,7 @@ jobs:
       # This is used to complete the identity challenge
       # with sigstore/fulcio when running outside of PRs.
       id-token: write
+      security-events: write   # To upload sarif files
 
     steps:
       - name: Checkout repository
