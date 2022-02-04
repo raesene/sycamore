@@ -103,3 +103,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: 'trivy-results.sarif'
+        permissions:
+          id-token: write
+          contents: write              # This is required for actions/checkout@v1
+          security-events: write   # To upload sarif files
